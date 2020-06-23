@@ -1,0 +1,56 @@
+package FactoryExample;
+
+interface Item {
+    void getItem();
+}
+class Jeans implements Item {
+    public void getItem () {
+        System.out.println("buy jeans");
+    }
+}
+class Shorts implements Item {
+    public void getItem () {
+        System.out.println("buy shorts");
+    }
+}
+class Trousers implements Item {
+    public void getItem () {
+        System.out.println("buy trousers");
+    }
+}
+
+class Factory {
+    public Item getCurrentItem(String inputItem) {
+        Item item = null;
+        if (inputItem.equals("jeans")) {
+            item = new Jeans();
+        } else if (inputItem.equals("shorts")) {
+           item = new Shorts();
+        } else if (inputItem.equals("trousers")) {
+            item = new Trousers();
+        }
+        return item;
+    }
+}
+
+public class MainClass {
+    public static void main(String[] args){
+        Factory factory = new Factory();
+        
+        String t = "trousers";
+        Item item = factory.getCurrentItem(t);
+        item.getItem();
+        
+        String j = "jeans";
+        item = factory.getCurrentItem(j);
+        item.getItem();
+        
+        String j2 = "jeans";
+        item = factory.getCurrentItem(j2);
+        item.getItem();
+        
+        String s = "shorts";
+        item = factory.getCurrentItem(s);
+        item.getItem();
+    }
+}
